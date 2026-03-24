@@ -6,17 +6,21 @@ namespace Elemental.Framework.Pool
 {
     public class PoolManager : MonoBehaviour
     {
-        Dictionary<GameObject, ObjectPool<GameObject>> pools;
+        Dictionary<GameObject, ObjectPool<GameObject>> pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
+
+        [SerializeField] List<GameObject> dropItemPrefabs;
 
         void Awake()
         {
-            pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
+            CreatePool(dropItemPrefabs, transform);
         }
 
-        public void PreloadPool(List<GameObject> prefabs, Transform parent, int preloadCount)
+        public void CreatePool(List<GameObject> prefabs, Transform parent)
         {
             foreach (GameObject prefab in prefabs)
             {
+                if (pools.TryGetValue(prefab, out ObjectPool<GameObject> objectPool)) continue;
+
                 ObjectPool<GameObject> pool = null;
 
                 pool = new ObjectPool<GameObject>(
@@ -30,30 +34,24 @@ namespace Elemental.Framework.Pool
                     );
 
                 pools[prefab] = pool;
-
-                for (int i = 0; i <= preloadCount; i++)
-                {
-                    GameObject spawnedObject = CreateInstance(prefab, parent, pool);
-                    pool.Release(spawnedObject);
-                }
             }
         }
 
-        GameObject CreateInstance(GameObject p, Transform parent, ObjectPool<GameObject> pool)
+        GameObject CreateInstance(GameObject prefab, Transform parent, ObjectPool<GameObject> pool)
         {
-            GameObject go = Instantiate(p, parent);
+            GameObject gameObject = Instantiate(prefab, parent);
 
-            if (go.TryGetComponent(out IPoolMemorable po))
+            if (gameObject.TryGetComponent(out IPoolMemorable po))
             {
                 po.PoolMemorise(pool);
             }
 
-            return go;
+            return gameObject;
         }
 
-        public GameObject PooledSpawn(GameObject p, Vector2 pos)
+        public GameObject PooledSpawnSetPos(GameObject prefab, Vector2 pos)
         {
-            if (pools.TryGetValue(p, out ObjectPool<GameObject> pool))
+            if (pools.TryGetValue(prefab, out ObjectPool<GameObject> pool))
             {
                 GameObject spawnedObject = pool.Get();
 
@@ -67,19 +65,32 @@ namespace Elemental.Framework.Pool
             return null;
         }
 
-        void OnGet(GameObject go)
+        public GameObject PooledSpawn(GameObject prefab)
+        {
+            if (pools.TryGetValue(prefab, out ObjectPool<GameObject> pool))
+            {
+                GameObject spawnedObject = pool.Get();
+
+                spawnedObject.SetActive(true);
+
+                return spawnedObject;
+            }
+            return null;
+        }
+
+        void OnGet(GameObject gameObject)
         {
 
         }
 
-        void OnRelease(GameObject go)
+        void OnRelease(GameObject gameObject)
         {
-            go.SetActive(false);
+            gameObject.SetActive(false);
         }
 
-        void OnDestroyObject(GameObject go)
+        void OnDestroyObject(GameObject gameObject)
         {
-            Destroy(go);
+            Destroy(gameObject);
         }
 
     }

@@ -1,12 +1,13 @@
 using Elemental.Framework.Pool;
-using Elemental.Gameplay.Resource.Cut;
+using Elemental.Gameplay.Resource.Drop;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Resource.Tree
+namespace Elemental.Gameplay.Resource.Cut
 {
-    public class TreeBehaviour : MonoBehaviour, ICuttable
+    public class ResourceCut : MonoBehaviour, ICuttable
     {
         PooledObject pooledObject;
+        ResourceDrop resourceDrop;
 
         public int cutCount;
         public int currentCutCount;
@@ -14,6 +15,7 @@ namespace Elemental.Gameplay.Resource.Tree
         void Awake()
         {
             pooledObject = GetComponent<PooledObject>();
+            resourceDrop = GetComponent<ResourceDrop>();
             currentCutCount = 0;
         }
 
@@ -28,7 +30,7 @@ namespace Elemental.Gameplay.Resource.Tree
 
         void CutComplete()
         {
-            // TODO : 자원 드랍 및 풀 리턴
+            resourceDrop.Drop();
             pooledObject.PoolReturn();
         }
     }
