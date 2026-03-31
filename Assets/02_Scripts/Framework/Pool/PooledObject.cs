@@ -3,7 +3,7 @@ using UnityEngine.Pool;
 
 namespace Elemental.Framework.Pool
 {
-    public class PooledObject : MonoBehaviour, IPoolMemorable, IReturnable
+    public class PooledObject
     {
         ObjectPool<GameObject> myPool;
 
@@ -12,7 +12,7 @@ namespace Elemental.Framework.Pool
             myPool = pool;
         }
 
-        public void PoolReturn()
+        public void PoolReturn(GameObject gameObject)
         {
             myPool.Release(gameObject);
         }

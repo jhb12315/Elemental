@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Elemental.Gameplay.Resource.item
 {
-    public class ItemReturner : MonoBehaviour
+    public class ItemReturner : MonoBehaviour, IPoolInitialize
     {
         PooledObject pooledObject;
 
@@ -17,13 +17,14 @@ namespace Elemental.Gameplay.Resource.item
 
         public void Initialize()
         {
+            pooledObject = new PooledObject();
             isReturned = false;
         }
 
         public void OnCollected()
         {
             if (isReturned) return;
-            pooledObject.PoolReturn();
+            pooledObject.PoolReturn(gameObject);
             isReturned = true;
         }
     }
