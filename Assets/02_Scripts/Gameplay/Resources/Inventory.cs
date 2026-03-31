@@ -7,6 +7,7 @@ namespace Elemental.Gameplay.Resource.item
     public class Inventory : MonoBehaviour
     {
         Dictionary<int, List<ItemSlot>> currentItems;
+        [SerializeField]GameObject InventoryGridUI;
         ItemSlotUI[] itemSlotUI;
 
         [SerializeField] int maxInventorySlotCount;
@@ -15,7 +16,7 @@ namespace Elemental.Gameplay.Resource.item
         void Awake()
         {
             currentItems = new Dictionary<int, List<ItemSlot>>(maxInventorySlotCount);
-            itemSlotUI = GetComponentsInChildren<ItemSlotUI>();
+            itemSlotUI = InventoryGridUI.GetComponentsInChildren<ItemSlotUI>();
         }
 
         void AddInventoryItem(ItemDataStorage item, ItemReturner returner)
@@ -52,10 +53,10 @@ namespace Elemental.Gameplay.Resource.item
                 if (currentInventorySlotCount == maxInventorySlotCount) return;
 
                 ItemSlot slot = new ItemSlot(item.ItemData);
-                itemSlots = new List<ItemSlot>();
-                itemSlots.Add(slot);
+                List<ItemSlot> newItemSlots = new List<ItemSlot>();
+                newItemSlots.Add(slot);
 
-                currentItems.Add(item.ItemData.itemID, itemSlots);
+                currentItems.Add(item.ItemData.itemID, newItemSlots);
                 currentInventorySlotCount++;
                 slot.AddItem();
                 returner.OnCollected();
@@ -66,7 +67,7 @@ namespace Elemental.Gameplay.Resource.item
         {
             if (collision.CompareTag("DropItem"))
             {
-                AddInventoryItem(collision.GetComponent<ItemDataStorage>(), collision.GetComponent<ItemReturner>());
+                AddInventoryItem(collision.gameObject.GetComponent<ItemDataStorage>(), collision.gameObject.GetComponent<ItemReturner>());
             }
         }
     }
