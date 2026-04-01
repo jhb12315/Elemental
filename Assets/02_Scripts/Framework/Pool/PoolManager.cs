@@ -41,9 +41,9 @@ namespace Elemental.Framework.Pool
         {
             GameObject gameObject = Instantiate(prefab, parent);
 
-            if (gameObject.TryGetComponent(out IPoolMemorable po))
+            if (gameObject.TryGetComponent(out IPoolObject poolObject))
             {
-                po.PoolMemorise(pool);
+                poolObject.OnCreated(pool);
             }
 
             return gameObject;
@@ -80,11 +80,12 @@ namespace Elemental.Framework.Pool
 
         void OnGet(GameObject gameObject)
         {
-
+            gameObject.GetComponent<IPoolable>().OnSpawn();
         }
 
         void OnRelease(GameObject gameObject)
         {
+            gameObject.GetComponent<IPoolable>().OnDespawn();
             gameObject.SetActive(false);
         }
 

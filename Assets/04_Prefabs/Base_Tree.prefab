@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8609151626481820549}
   - component: {fileID: 8143592262430774722}
   - component: {fileID: 2648231171742648302}
-  - component: {fileID: 3272540548365633120}
   - component: {fileID: -2506473015439748213}
   - component: {fileID: 768938126523266873}
   m_Layer: 0
@@ -131,18 +130,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.4}
   m_Radius: 0.15
---- !u!114 &3272540548365633120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3110692711932825798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 856fd632d7bda3c4d9e6686740fe9cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Elemental.Framework.Pool.PooledObject
 --- !u!114 &-2506473015439748213
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -3924096918890151727}
   - component: {fileID: 7179653454403412428}
   - component: {fileID: -8769007372399468629}
-  - component: {fileID: -8807732160118899244}
   m_Layer: 0
   m_Name: 1_Log
   m_TagString: DropItem
@@ -156,15 +155,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100993314ce49cb43b6ea304b0716375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Elemental.Gameplay.Resource.item.ItemReturner
---- !u!114 &-8807732160118899244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6185167120976127887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 856fd632d7bda3c4d9e6686740fe9cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Elemental.Framework.Pool.PooledObject

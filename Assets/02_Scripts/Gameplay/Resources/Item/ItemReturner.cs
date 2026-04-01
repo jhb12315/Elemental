@@ -1,23 +1,27 @@
 using Elemental.Framework.Pool;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Elemental.Gameplay.Resource.item
 {
-    public class ItemReturner : MonoBehaviour, IPoolInitialize
+    public class ItemReturner : MonoBehaviour, IPoolObject, IPoolable
     {
-        PooledObject pooledObject;
-
         bool isReturned;
+
+        public PooledObject pooledObject;
 
         void Awake()
         {
-            pooledObject = GetComponent<PooledObject>();
-            isReturned = true;
+            pooledObject = new PooledObject();
         }
 
-        public void Initialize()
+        public void OnCreated(ObjectPool<GameObject> pool)
         {
-            pooledObject = new PooledObject();
+            pooledObject.PoolMemorise(pool);
+        }
+
+        public void OnSpawn()
+        {
             isReturned = false;
         }
 
@@ -25,6 +29,10 @@ namespace Elemental.Gameplay.Resource.item
         {
             if (isReturned) return;
             pooledObject.PoolReturn(gameObject);
+        }
+
+        public void OnDespawn()
+        {
             isReturned = true;
         }
     }
