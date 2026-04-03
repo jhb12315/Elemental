@@ -7,7 +7,7 @@ namespace Elemental.Framework.UI.Inventory
     {
         bool isOnInventory;
 
-        private void Awake()
+        void Start()
         {
             isOnInventory = false;
             gameObject.SetActive(false);

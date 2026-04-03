@@ -15,4 +15,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 1a94a6ef86dee1949bf6196d33433051, type: 3}
   itemName: "\uD1B5\uB098\uBB34"
   itemID: 1
-  maxOverlapCount: 50
+  maxStackCount: 50

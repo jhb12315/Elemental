@@ -1,75 +1,70 @@
 using Elemental.Gameplay.item.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Elemental.Gameplay.item
 {
     public class Inventory : MonoBehaviour
     {
-        Dictionary<int, List<ItemSlot>> currentItems;
-        [SerializeField]GameObject InventoryGridUI;
+        List<ItemSlot> slots;
         ItemSlotUI[] itemSlotUI;
 
         int maxInventorySlotCount;
         int currentInventorySlotCount;
 
+        bool isOnInventory;
+
         void Awake()
         {
-            itemSlotUI = InventoryGridUI.GetComponentsInChildren<ItemSlotUI>();
+            currentInventorySlotCount = 0;
+        }
+
+        void Start()
+        {
+            itemSlotUI = GetComponentsInChildren<ItemSlotUI>();
             maxInventorySlotCount = itemSlotUI.Length;
-            currentItems = new Dictionary<int, List<ItemSlot>>(maxInventorySlotCount);
+            slots = new List<ItemSlot>(maxInventorySlotCount);
+            isOnInventory = false;
+            gameObject.SetActive(false);
         }
 
-        void AddInventoryItem(ItemDataStorage item, ItemReturner returner)
+        public void OnInventory(InputAction.CallbackContext ctx)
         {
-            if (currentItems.TryGetValue(item.ItemData.itemID, out List<ItemSlot> itemSlots))
+            if (ctx.started)
             {
-                ItemSlot slot = null;
-
-                foreach (var itemSlot in itemSlots)
-                {
-                    if (itemSlot.CurrentCount < itemSlot.MaxOverlapCount)
-                    {
-                        slot = itemSlot;
-                        break;
-                    }
-                }
-
-                // 공간이 남은 리스트가 없을 때
-                if (slot == null)
-                {
-                    if (currentInventorySlotCount == maxInventorySlotCount) return;
-
-                    slot = new ItemSlot(item.ItemData);
-                    itemSlots.Add(slot);
-                    currentInventorySlotCount++;
-                }
-
-                slot.AddItem();
-                returner.OnCollected();
+                if (isOnInventory) isOnInventory = false;
+                else isOnInventory = true;
+                gameObject.SetActive(isOnInventory);
             }
-            // 딕셔너리에 없을 때
-            else
+        }
+
+        public void AddItem(ItemData item, ItemReturner returner)
+        {
+            ItemSlot addItemSlot = null;
+
+            foreach (var slot in slots)
             {
-                if (currentInventorySlotCount == maxInventorySlotCount) return;
+                if (slot.ItemID == item.itemID)
+                {
+                    if (slot.CurrentCount >= item.maxStackCount) continue;
+                    addItemSlot = slot;
+                    break;
+                }
+            }
 
-                ItemSlot slot = new ItemSlot(item.ItemData);
-                List<ItemSlot> newItemSlots = new List<ItemSlot>();
-                newItemSlots.Add(slot);
-
-                currentItems.Add(item.ItemData.itemID, newItemSlots);
+            if (addItemSlot == null)
+            {
+                if (currentInventorySlotCount >= maxInventorySlotCount) return;
+                addItemSlot = new ItemSlot(item);
+                itemSlotUI[currentInventorySlotCount].SetUpSlotUI(addItemSlot);
+                slots.Add(addItemSlot);
+                addItemSlot.ItemChanged(addItemSlot.CurrentCount, item);
                 currentInventorySlotCount++;
-                slot.AddItem();
-                returner.OnCollected();
             }
-        }
 
-        void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("DropItem"))
-            {
-                AddInventoryItem(collision.gameObject.GetComponent<ItemDataStorage>(), collision.gameObject.GetComponent<ItemReturner>());
-            }
+            addItemSlot.ItemCountUp();
+            returner.OnCollected();
         }
     }
 }

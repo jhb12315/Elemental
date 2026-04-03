@@ -8,6 +8,6 @@ namespace Elemental.Gameplay
         public Sprite sprite;
         public string itemName;
         public int itemID;
-        public int maxOverlapCount;
+        public int maxStackCount;
     }
 }
