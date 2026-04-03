@@ -1,7 +1,6 @@
-using Elemental.Gameplay.Resource.Drop;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Resource.item
+namespace Elemental.Gameplay.item
 {
     public class ItemDataStorage : MonoBehaviour
     {

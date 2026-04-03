@@ -1,8 +1,8 @@
-using Elemental.Gameplay.Resource.item.UI;
+using Elemental.Gameplay.item.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Resource.item
+namespace Elemental.Gameplay.item
 {
     public class Inventory : MonoBehaviour
     {
@@ -10,13 +10,14 @@ namespace Elemental.Gameplay.Resource.item
         [SerializeField]GameObject InventoryGridUI;
         ItemSlotUI[] itemSlotUI;
 
-        [SerializeField] int maxInventorySlotCount;
+        int maxInventorySlotCount;
         int currentInventorySlotCount;
 
         void Awake()
         {
-            currentItems = new Dictionary<int, List<ItemSlot>>(maxInventorySlotCount);
             itemSlotUI = InventoryGridUI.GetComponentsInChildren<ItemSlotUI>();
+            maxInventorySlotCount = itemSlotUI.Length;
+            currentItems = new Dictionary<int, List<ItemSlot>>(maxInventorySlotCount);
         }
 
         void AddInventoryItem(ItemDataStorage item, ItemReturner returner)

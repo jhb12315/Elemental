@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Elemental.Gameplay.Resource.Drop
+namespace Elemental.Gameplay
 {
     [CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/Resource/Drop/ItemData")]
     public class ItemData : ScriptableObject

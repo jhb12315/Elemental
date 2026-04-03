@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Elemental.Gameplay.Resource.item.UI
+namespace Elemental.Gameplay.item.UI
 {
     public class ItemSlotUI : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace Elemental.Gameplay.Resource.item.UI
 
         void Awake()
         {
-            itemSprite = GetComponent<Image>();
+            itemSprite = transform.Find("ItemSprite").GetComponent<Image>();
             itemCountText = GetComponentInChildren<TextMeshProUGUI>();
         }
 

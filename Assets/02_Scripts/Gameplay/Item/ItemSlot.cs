@@ -1,6 +1,4 @@
-using Elemental.Gameplay.Resource.Drop;
-
-namespace Elemental.Gameplay.Resource.item
+namespace Elemental.Gameplay.item
 {
     public class ItemSlot
     {
