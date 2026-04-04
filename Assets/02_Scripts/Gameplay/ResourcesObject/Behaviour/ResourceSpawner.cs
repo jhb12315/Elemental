@@ -40,8 +40,10 @@ namespace Elemental.Gameplay.Resource.Pool
         {
             for (int i = 0; i < 10; i++)
             {
-                GameObject spawnObject = poolManager.PooledSpawnSetPos(resourcePrefabs[0], GetRandomPoint());
-                spawnObject.GetComponent<ResourceDrop>().Initialize(poolManager);
+                GameObject spawnTreeObject = poolManager.PooledSpawnSetPos(resourcePrefabs[0], GetRandomPoint());
+                GameObject spawnRockObject = poolManager.PooledSpawnSetPos(resourcePrefabs[1], GetRandomPoint());
+                spawnTreeObject.GetComponent<ResourceDrop>().Initialize(poolManager);
+                spawnRockObject.GetComponent<ResourceDrop>().Initialize(poolManager);
             }
         }
 
