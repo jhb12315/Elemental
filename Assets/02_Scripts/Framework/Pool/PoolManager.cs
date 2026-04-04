@@ -9,10 +9,12 @@ namespace Elemental.Framework.Pool
         Dictionary<GameObject, ObjectPool<GameObject>> pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
 
         [SerializeField] List<GameObject> dropItemPrefabs;
+        [SerializeField] List<GameObject> fairyPrefabs;
 
         void Awake()
         {
             CreatePool(dropItemPrefabs, transform);
+            CreatePool(fairyPrefabs, transform);
         }
 
         public void CreatePool(List<GameObject> prefabs, Transform parent)

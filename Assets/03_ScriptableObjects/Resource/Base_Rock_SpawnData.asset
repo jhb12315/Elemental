@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba775e349bad784984df72a8af91752, type: 3}
   m_Name: Base_Rock_SpawnData
   m_EditorClassIdentifier: Assembly-CSharp::Elemental.Gameplay.Resource.Spawn.ResourceSpawnData
-  prefab: {fileID: 3110692711932825798, guid: 51d583e8a5b01a442b4e05dd45fae71a, type: 3}
-  dropItem: {fileID: 6185167120976127887, guid: fe6f3729ca7a1524c920c9b86e34544b, type: 3}
+  prefab: {fileID: 3110692711932825798, guid: 3a577e3c325d6f046a69005f9bae1f00, type: 3}
   intervalTime: 0
   maxCount: 0
