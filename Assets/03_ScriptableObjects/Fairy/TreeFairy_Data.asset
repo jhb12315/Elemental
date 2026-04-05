@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e052ea6ce54a3ab49ba98ca7d919b2f9, type: 3}
+  m_Name: TreeFairy_Data
+  m_EditorClassIdentifier: Assembly-CSharp::Elemental.Gameplay.Fairy.HarvestFairyData
+  fairyName: "\uB098\uBB34 \uC815\uB839"
+  fairyPrefab: {fileID: 5732402823397104326, guid: 8bf3cb43a5acc574da69587f4ec44586, type: 3}
+  resourceType: 1
+  speed: 3

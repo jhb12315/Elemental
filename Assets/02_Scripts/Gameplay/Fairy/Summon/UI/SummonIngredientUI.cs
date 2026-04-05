@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Elemental.Gameplay.Fairy.Summon
 {
+    // 소환 재료 표시 UI
     public class SummonIngredientUI : MonoBehaviour
     {
         Image ingredientImage;
