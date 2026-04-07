@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5505973899767887554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107,3 +107,7 @@ MonoBehaviour:
   poolManager: {fileID: 0}
   fairyPrefabs:
   - {fileID: 5732402823397104326, guid: 8bf3cb43a5acc574da69587f4ec44586, type: 3}
+  resourceLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  safeZone: {x: 0, y: 0}

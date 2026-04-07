@@ -5301,7 +5301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba67beb0a41dae43a754fa84dd20b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Elemental.Gameplay.Fairy.Summon.FairyButton
-  fairySummonData: {fileID: 11400000, guid: 21796e8996f6e7247a3f3076f70afd4c, type: 2}
+  fairySummonData: {fileID: 11400000, guid: 8596c35c0c883654c8ad6f97f2844c71, type: 2}
   recipeUI: {fileID: 1691459066}
 --- !u!114 &699254488
 MonoBehaviour:

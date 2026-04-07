@@ -9,9 +9,8 @@ public class Alter : MonoBehaviour
     [SerializeField] PoolManager poolManager;
     [SerializeField] List<GameObject> fairyPrefabs;
 
-    [SerializeField] LayerMask resourceLayer;
     ContactFilter2D resourceFilter;
-    List<Collider2D> harvestTargets;
+    List<Collider2D> harvestTargets = new List<Collider2D>(50);
 
     [SerializeField] Vector2 safeZone;
 
@@ -19,11 +18,9 @@ public class Alter : MonoBehaviour
     {
         resourceFilter = new ContactFilter2D
         {
-            layerMask = resourceLayer,
+            layerMask = LayerMask.GetMask("Resource"),
             useLayerMask = true
         };
-
-        harvestTargets = new List<Collider2D>(50);
 
         poolManager.CreatePool(fairyPrefabs, transform);
     }
@@ -37,7 +34,7 @@ public class Alter : MonoBehaviour
     public void SummonFairy(HarvestFairyData fairyData)
     {
         GameObject spawnFairy = poolManager.PooledSpawnSetPos(fairyData.fairyPrefab, transform.position);
-        spawnFairy.GetComponent<HarvestFairy>().Initialize(GetHarvestTargets(), fairyData);
+        spawnFairy.GetComponent<HarvestFairy>().Initialize(this, GetHarvestTargets(), fairyData);
     }
 
     List<Collider2D> GetHarvestTargets()

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2648231171742648302}
   - component: {fileID: -2506473015439748213}
   - component: {fileID: 768938126523266873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base_Rock
-  m_TagString: Resource
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3110692711932825798}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.94, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -7,6 +7,6 @@ namespace Elemental.Gameplay.Resource
     {
         None = 0,
         Tree = 1,
-        Stone = 2
+        Rock = 2
     }
 }

@@ -9,12 +9,10 @@ namespace Elemental.Framework.Pool
         Dictionary<GameObject, ObjectPool<GameObject>> pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
 
         [SerializeField] List<GameObject> dropItemPrefabs;
-        [SerializeField] List<GameObject> fairyPrefabs;
 
         void Awake()
         {
             CreatePool(dropItemPrefabs, transform);
-            CreatePool(fairyPrefabs, transform);
         }
 
         public void CreatePool(List<GameObject> prefabs, Transform parent)
@@ -82,12 +80,12 @@ namespace Elemental.Framework.Pool
 
         void OnGet(GameObject gameObject)
         {
-            gameObject.GetComponent<IPoolable>().OnSpawn();
+            if(gameObject.TryGetComponent(out IPoolable poolable)) poolable.OnSpawn();
         }
 
         void OnRelease(GameObject gameObject)
         {
-            gameObject.GetComponent<IPoolable>().OnDespawn();
+            if (gameObject.TryGetComponent(out IPoolable poolable)) poolable.OnDespawn();
             gameObject.SetActive(false);
         }
 
