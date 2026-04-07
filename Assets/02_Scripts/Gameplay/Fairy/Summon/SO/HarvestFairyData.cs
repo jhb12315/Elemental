@@ -9,6 +9,7 @@ namespace Elemental.Gameplay.Fairy
         public string fairyName;
         public GameObject fairyPrefab;
         public ResourceType resourceType;
+        public float harvestTimeInterval;
         public float speed;
     }
 }

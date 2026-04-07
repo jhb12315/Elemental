@@ -16,14 +16,14 @@ namespace Elemental.Gameplay.Player.Harvest
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.gameObject.CompareTag("Resource")) return;
+            if (collision.gameObject.layer != LayerMask.NameToLayer("Resource")) return;
             targetResource = collision.gameObject.GetComponent<ICuttable>();
             canHarvest = true;
         }
 
         void OnTriggerExit2D(Collider2D collision)
         {
-            if (!collision.gameObject.CompareTag("Resource")) return;
+            if (collision.gameObject.layer != LayerMask.NameToLayer("Resource")) return;
             canHarvest = false;
             targetResource = null;
         }

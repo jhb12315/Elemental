@@ -15,4 +15,5 @@ MonoBehaviour:
   fairyName: "\uB098\uBB34 \uC815\uB839"
   fairyPrefab: {fileID: 5732402823397104326, guid: 8bf3cb43a5acc574da69587f4ec44586, type: 3}
   resourceType: 1
+  harvestTimeInterval: 0.5
   speed: 3

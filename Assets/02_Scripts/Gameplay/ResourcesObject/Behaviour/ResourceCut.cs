@@ -13,7 +13,7 @@ namespace Elemental.Gameplay.Resource.Cut
         public int cutCount;
         public int currentCutCount;
 
-        bool isReturned;
+        public bool IsReturned { get; private set; }
 
         void Awake()
         {
@@ -33,7 +33,7 @@ namespace Elemental.Gameplay.Resource.Cut
 
         public void OnSpawn()
         {
-            isReturned = false;
+            IsReturned = false;
         }
 
         public void Cut()
@@ -48,14 +48,14 @@ namespace Elemental.Gameplay.Resource.Cut
         // 채집 완료 후
         void CutComplete()
         {
-            if (isReturned) return;
+            if (IsReturned) return;
             resourceDrop.Drop();
             pooledObject.PoolReturn(gameObject);
         }
 
         public void OnDespawn()
         {
-            isReturned = true;
+            IsReturned = true;
         }
     }
 }
