@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Elemental.Gameplay.item;
 using UnityEngine;
 
 namespace Elemental.Gameplay.Fairy.Summon
@@ -26,7 +26,7 @@ namespace Elemental.Gameplay.Fairy.Summon
 
             for (int i = 0; i < fairySummonData.ingredient.Count; i++)
             {
-                SummonIngredient ingredient = fairySummonData.ingredient[i];
+                RecipeIngredient ingredient = fairySummonData.ingredient[i];
                 summonIngredientUI[i].gameObject.SetActive(true);
                 summonIngredientUI[i].SetIngredient(ingredient.item.sprite, ingredient.count);
             }

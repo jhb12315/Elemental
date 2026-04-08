@@ -1,14 +1,18 @@
 using Elemental.Framework.Pool;
 using Elemental.Gameplay.Resource.Drop;
 using Elemental.Gameplay.Resource.Spawn;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 namespace Elemental.Gameplay.Resource.Pool
 {
     public class ResourceSpawner : MonoBehaviour
     {
         [SerializeField] PoolManager poolManager;
         [SerializeField] ResourceSpawnData[] resourceDatas;
+
+        public event Action OnResourceSpawned;
 
         List<GameObject> resourcePrefabs;
 
@@ -45,6 +49,8 @@ namespace Elemental.Gameplay.Resource.Pool
                 spawnTreeObject.GetComponent<ResourceDrop>().Initialize(poolManager);
                 spawnRockObject.GetComponent<ResourceDrop>().Initialize(poolManager);
             }
+
+            OnResourceSpawned?.Invoke();
         }
 
         Vector2 GetRandomPoint()

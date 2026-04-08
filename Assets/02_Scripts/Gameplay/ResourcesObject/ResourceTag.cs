@@ -3,7 +3,7 @@ using System;
 namespace Elemental.Gameplay.Resource
 {
     [Flags]
-    public enum ResourceType
+    public enum ResourceTag
     {
         None = 0,
         Tree = 1,

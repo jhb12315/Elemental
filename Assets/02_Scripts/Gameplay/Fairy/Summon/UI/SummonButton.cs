@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Elemental.Gameplay.Fairy.Summon
 {
-    // 소환 실행 버튼
+    // Fairy 소환 버튼
     public class SummonButton : MonoBehaviour
     {
         [SerializeField] SummonRecipeUI summonRecipe;
-        [SerializeField] Alter alter;
+        [SerializeField] Altar alter;
 
         public void OnClick()
         {

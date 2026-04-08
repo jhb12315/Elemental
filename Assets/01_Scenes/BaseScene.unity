@@ -3961,7 +3961,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8.4375
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12983,7 +12983,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 8
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -14669,16 +14669,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5293990097617008085, guid: 72ec23120fb1c4848a50ae553f042ed3, type: 3}
       propertyPath: safeZone.x
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5293990097617008085, guid: 72ec23120fb1c4848a50ae553f042ed3, type: 3}
       propertyPath: safeZone.y
-      value: 25
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5293990097617008085, guid: 72ec23120fb1c4848a50ae553f042ed3, type: 3}
       propertyPath: poolManager
       value: 
       objectReference: {fileID: 1560602177}
+    - target: {fileID: 5293990097617008085, guid: 72ec23120fb1c4848a50ae553f042ed3, type: 3}
+      propertyPath: resourceSpawner
+      value: 
+      objectReference: {fileID: 1856077799}
     - target: {fileID: 5293990097617008085, guid: 72ec23120fb1c4848a50ae553f042ed3, type: 3}
       propertyPath: resourceLayer.m_Bits
       value: 64
