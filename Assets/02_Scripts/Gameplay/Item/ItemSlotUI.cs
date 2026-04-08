@@ -23,6 +23,7 @@ namespace Elemental.Gameplay.item.UI
         {
             this.slot = slot;
             slot.OnCountUp += CountUpdate;
+            slot.OnItemNull += SetNull;
             slot.OnChangedItem += ItemChanged;
         }
 
