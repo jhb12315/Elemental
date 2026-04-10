@@ -1,5 +1,18 @@
 {
   "dependencies": {
+    "com.seanba.super-tiled2unity": {
+      "version": "file:com.seanba.super-tiled2unity",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.2d.sprite": "1.0.0",
+        "com.unity.2d.tilemap": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0",
+        "com.unity.modules.tilemap": "1.0.0",
+        "com.unity.burst": "1.0.0"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "14.0.3",
       "depth": 0,
