@@ -1,14 +1,18 @@
 using Elemental.Framework.Pool;
 using Elemental.Gameplay.Resource.Drop;
+using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Elemental.Gameplay.Resource.Cut
 {
-    public class ResourceCut : MonoBehaviour, ICuttable, IPoolObject, IPoolable
+    public class ResourceReturner : MonoBehaviour, ICuttable, IPoolObject, IPoolable
     {
         PooledObject pooledObject;
         ResourceDrop resourceDrop;
+        Collider2D coll;
+
+        public event Action<Collider2D> OnReturned;
 
         public int cutCount;
         public int currentCutCount;
@@ -19,6 +23,7 @@ namespace Elemental.Gameplay.Resource.Cut
         {
             pooledObject = new PooledObject();
             resourceDrop = GetComponent<ResourceDrop>();
+            coll = GetComponent<Collider2D>();
         }
 
         public void Initialize()
@@ -49,6 +54,7 @@ namespace Elemental.Gameplay.Resource.Cut
         void CutComplete()
         {
             if (IsReturned) return;
+            OnReturned?.Invoke(coll);
             resourceDrop.Drop();
             pooledObject.PoolReturn(gameObject);
         }

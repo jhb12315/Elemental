@@ -5,12 +5,10 @@ using UnityEngine.InputSystem;
 
 namespace Elemental.Gameplay.item
 {
-    public class Inventory : MonoBehaviour
+    public class Inventory : MonoBehaviour, ICraftable
     {
         List<ItemSlot> itemSlots;
         ItemSlotUI[] itemSlotUI;
-
-        List<(ItemSlot, int)> removeCraftItem = new List<(ItemSlot, int)>(10);
 
         int maxInventorySlotCount;
         int currentInventorySlotCount;
@@ -31,10 +29,10 @@ namespace Elemental.Gameplay.item
             gameObject.SetActive(false);
         }
 
-        // TODO : 재료 확인과 삭제 분리
-        public bool HasRecipeIngredients(List<RecipeIngredient> ingredients)
+        // 체크 후 생성
+        public bool TryCraft(List<RecipeIngredient> ingredients)
         {
-            removeCraftItem.Clear();
+            List<(ItemSlot, int)> removeCraftItem = new List<(ItemSlot, int)>(20);
 
             foreach (var ingredient in ingredients)
             {
@@ -62,17 +60,46 @@ namespace Elemental.Gameplay.item
                 if (currentCount < requiredCount) return false;
             }
 
-            ExecuteCraft();
+            Craft(removeCraftItem);
 
             return true;
         }
 
-        void ExecuteCraft()
+        void Craft(List<(ItemSlot, int)> removeCraftItem)
         {
             foreach (var (slot, count) in removeCraftItem)
             {
                 slot.RemoveItem(count);
             }
+        }
+
+        // 재료가 충분한지 체크만
+        public bool CanCraft(List<RecipeIngredient> ingredients)
+        {
+            foreach (var ingredient in ingredients)
+            {
+                int id = ingredient.item.itemID;
+                int requiredCount = ingredient.count;
+                int currentCount = 0;
+
+                foreach (var slot in itemSlots)
+                {
+                    if (slot.ItemID != id) continue;
+                    currentCount += slot.CurrentCount;
+                    if (currentCount < requiredCount)
+                    {
+                        continue;
+                    }
+                    else if (currentCount >= requiredCount)
+                    {
+                        break;
+                    }
+                }
+
+                if (currentCount < requiredCount) return false;
+            }
+
+            return true;
         }
 
         public void AddItem(ItemData item, ItemReturner returner)

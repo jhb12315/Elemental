@@ -47,8 +47,6 @@ namespace Elemental.Gameplay.Fairy.Harvest.Behaviour
             rigid.linearVelocity = Vector2.zero;
         }
 
-
-        // TODO : 채집 중 target이 null일 때
         IEnumerator MoveToTarget()
         {
             while (true)
@@ -57,7 +55,11 @@ namespace Elemental.Gameplay.Fairy.Harvest.Behaviour
                 if (target == null) yield break;
                 ICuttable resourceCut = target.GetComponent<ICuttable>();
                 isArrived = false;
-                yield return new WaitUntil(() => isArrived);
+                yield return new WaitUntil(() => isArrived || resourceCut.IsReturned);
+                if (resourceCut.IsReturned)
+                {
+                    continue;
+                }
                 yield return StartCoroutine(Harvest(resourceCut));
             }
         }

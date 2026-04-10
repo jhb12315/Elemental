@@ -2,25 +2,28 @@ using Elemental.Framework.Pool;
 using Elemental.Gameplay.Fairy;
 using Elemental.Gameplay.Fairy.Harvest;
 using Elemental.Gameplay.Fairy.Harvest.Behaviour;
+using Elemental.Gameplay.Fairy.Summon;
+using Elemental.Gameplay.Interact;
 using Elemental.Gameplay.Resource.Pool;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Elemental.Gameplay
 {
-    public class Altar : MonoBehaviour
+    public class Altar : MonoBehaviour, IInteractable
     {
         [SerializeField] PoolManager poolManager;
         [SerializeField] ResourceSpawner resourceSpawner;
         [SerializeField] List<GameObject> fairyPrefabs;
+        [SerializeField] AltarUI altarUI;
 
-        ResourceTargetTool resourceTargetTool;
+        SafeZoneResourceTargetTool resourceTargetTool;
 
         [SerializeField] Vector2 safeZone;
 
         void Awake()
         {
-            resourceTargetTool = new ResourceTargetTool(transform.position, safeZone);
+            resourceTargetTool = new SafeZoneResourceTargetTool(transform.position, safeZone);
             poolManager.CreatePool(fairyPrefabs, transform);
             resourceSpawner.OnResourceSpawned += resourceTargetTool.CollectHarvestTargets;
         }
@@ -40,6 +43,16 @@ namespace Elemental.Gameplay
         void OnDestroy()
         {
             resourceSpawner.OnResourceSpawned -= resourceTargetTool.CollectHarvestTargets;
+        }
+
+        public void OnInteracted()
+        {
+            altarUI.gameObject.SetActive(true);
+        }
+
+        public void OffInteracted()
+        {
+            altarUI.gameObject.SetActive(false);
         }
     }
 }

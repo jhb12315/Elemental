@@ -14,6 +14,7 @@ namespace Elemental.Gameplay.Player.Harvest
             canHarvest = false;
         }
 
+        // TODO : 2개 이상의 자원이 붙었을 때 한 자리에서 채집 가능하게
         void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.layer != LayerMask.NameToLayer("Resource")) return;
