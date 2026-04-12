@@ -6,15 +6,11 @@ namespace Elemental.Gameplay.Resource.Drop
 {
     public class ResourceDrop : MonoBehaviour
     {
-        PoolManager poolManager;
-
         [SerializeField] DropTable dropTable;
         List<(GameObject, int)> dropValues;
 
-        public void Initialize(PoolManager pool)
+        public void Initialize()
         {
-            poolManager = pool;
-
             dropValues = new List<(GameObject, int)>(dropTable.datas.Count);
         }
 
@@ -29,7 +25,7 @@ namespace Elemental.Gameplay.Resource.Drop
 
                 for (int i = 1; i <= count; i++)
                 {
-                    poolManager.PooledSpawnSetPos(prefab, GetDropPosition());
+                    PoolManager.Instance.PooledSpawnSetPos(prefab, GetDropPosition());
                 }
             }
         }

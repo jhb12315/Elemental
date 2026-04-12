@@ -9,8 +9,9 @@ namespace Elemental.Gameplay.Resource.Pool
 {
     public class ResourceSpawner : MonoBehaviour
     {
-        [SerializeField] PoolManager poolManager;
         [SerializeField] ResourceSpawnData[] resourceDatas;
+
+        PoolManager poolManager;
 
         public event Action OnResourceSpawned;
 
@@ -20,6 +21,7 @@ namespace Elemental.Gameplay.Resource.Pool
 
         void Awake()
         {
+            poolManager = PoolManager.Instance;
             resourcePrefabs = new List<GameObject>(resourceDatas.Length);
             
             foreach (var data in resourceDatas)
@@ -46,8 +48,8 @@ namespace Elemental.Gameplay.Resource.Pool
             {
                 GameObject spawnTreeObject = poolManager.PooledSpawnSetPos(resourcePrefabs[0], GetRandomPoint());
                 GameObject spawnRockObject = poolManager.PooledSpawnSetPos(resourcePrefabs[1], GetRandomPoint());
-                spawnTreeObject.GetComponent<ResourceDrop>().Initialize(poolManager);
-                spawnRockObject.GetComponent<ResourceDrop>().Initialize(poolManager);
+                spawnTreeObject.GetComponent<ResourceDrop>().Initialize();
+                spawnRockObject.GetComponent<ResourceDrop>().Initialize();
             }
 
             OnResourceSpawned?.Invoke();
