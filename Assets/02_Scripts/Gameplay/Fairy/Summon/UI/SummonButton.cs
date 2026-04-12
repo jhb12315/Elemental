@@ -8,24 +8,19 @@ namespace Elemental.Gameplay.Fairy.Summon
     {
         [SerializeField] SummonRecipeUI summonRecipe;
         [SerializeField] Inventory inventory;
-        [SerializeField] Altar alter;
+        [SerializeField] Altar altar;
 
-        ICraftable craft;
-
-        void Awake()
-        {
-            craft = inventory;
-        }
+        ICraftable Craft => inventory;
 
         public void OnClick()
         {
             if (!summonRecipe.SelectFairy) return;
-            alter.SummonFairy(summonRecipe.SelectFairy.fairyData);
+            altar.SummonFairy(summonRecipe.SelectFairy.fairyData);
 
-            // Test : Fairy 소환
-            //if (craft.TryCraft(summonRecipe.SelectFairy.ingredient))
+            //Test: Fairy 소환
+            //if (Craft.TryCraft(summonRecipe.SelectFairy.ingredient))
             //{
-            //    alter.SummonFairy(summonRecipe.SelectFairy.fairyData);
+            //    altar.SummonFairy(summonRecipe.SelectFairy.fairyData);
             //    Debug.Log("소환됨");
             //}
             //else

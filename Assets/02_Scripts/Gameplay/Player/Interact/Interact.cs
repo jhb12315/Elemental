@@ -1,3 +1,4 @@
+using Elemental.Framework.UI;
 using Elemental.Gameplay.Interact;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,7 +16,10 @@ public class Interact : MonoBehaviour
     {
         if (ctx.started)
         {
+            if (UIManager.Instance.IsMouseOnUI) return;
+
             Collider2D overlapObejct = Physics2D.OverlapPoint(mousePosition);
+
             if (overlapObejct == null)
             {
                 return;

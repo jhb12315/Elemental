@@ -1,3 +1,4 @@
+using Elemental.Framework.UI;
 using Elemental.Gameplay.item.UI;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,13 @@ using UnityEngine.InputSystem;
 
 namespace Elemental.Gameplay.item
 {
-    public class Inventory : MonoBehaviour, ICraftable
+    public class Inventory : MonoBehaviour, ICraftable, IUIPanel
     {
         List<ItemSlot> itemSlots;
         ItemSlotUI[] itemSlotUI;
 
         int maxInventorySlotCount;
         int currentInventorySlotCount;
-
-        bool isOnInventory;
 
         void Awake()
         {
@@ -25,7 +24,6 @@ namespace Elemental.Gameplay.item
             itemSlotUI = GetComponentsInChildren<ItemSlotUI>();
             maxInventorySlotCount = itemSlotUI.Length;
             itemSlots = new List<ItemSlot>(maxInventorySlotCount);
-            isOnInventory = false;
             gameObject.SetActive(false);
         }
 
@@ -134,10 +132,25 @@ namespace Elemental.Gameplay.item
         {
             if (ctx.started)
             {
-                if (isOnInventory) isOnInventory = false;
-                else isOnInventory = true;
-                gameObject.SetActive(isOnInventory);
+                if (UIManager.Instance.CurrentOpenUI != this as IUIPanel)
+                {
+                    UIManager.Instance.OpenUI(this);
+                }
+                else
+                {
+                    UIManager.Instance.CloseUI();
+                }
             }
+        }
+
+        public void OnUI()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void OffUI()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

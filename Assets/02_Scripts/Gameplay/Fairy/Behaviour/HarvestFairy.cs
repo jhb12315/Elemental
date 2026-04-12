@@ -14,7 +14,7 @@ namespace Elemental.Gameplay.Fairy.Harvest.Behaviour
         IResourceFindable resourceTool;
         ResourceTag resourceTag;
 
-        public bool isArrived;
+        public bool hasArrived;
 
         float harvestTimeInterval;
         float moveSpeed;
@@ -26,7 +26,7 @@ namespace Elemental.Gameplay.Fairy.Harvest.Behaviour
 
         public void Initialize(IResourceFindable resourceTool, HarvestFairyData data)
         {
-            isArrived = false;
+            hasArrived = false;
             this.resourceTool = resourceTool;
             resourceTag = data.resourceTag;
             harvestTimeInterval = data.harvestTimeInterval;
@@ -36,14 +36,14 @@ namespace Elemental.Gameplay.Fairy.Harvest.Behaviour
 
         void FixedUpdate()
         {
-            if (isArrived || target == null) return;
+            if (hasArrived || target == null) return;
             rigid.linearVelocity = (target.ClosestPoint(target.transform.position) - (Vector2) transform.position).normalized * moveSpeed;
         }
 
         void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.collider != target) return;
-            isArrived = true;
+            hasArrived = true;
             rigid.linearVelocity = Vector2.zero;
         }
 
@@ -54,8 +54,8 @@ namespace Elemental.Gameplay.Fairy.Harvest.Behaviour
                 target = resourceTool.GetNextTarget(transform.position, resourceTag);
                 if (target == null) yield break;
                 ICuttable resourceCut = target.GetComponent<ICuttable>();
-                isArrived = false;
-                yield return new WaitUntil(() => isArrived || resourceCut.IsReturned);
+                hasArrived = false;
+                yield return new WaitUntil(() => hasArrived || resourceCut.IsReturned);
                 if (resourceCut.IsReturned)
                 {
                     continue;

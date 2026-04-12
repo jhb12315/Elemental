@@ -1,4 +1,5 @@
 using Elemental.Framework.Pool;
+using Elemental.Framework.UI;
 using Elemental.Gameplay.Fairy;
 using Elemental.Gameplay.Fairy.Harvest;
 using Elemental.Gameplay.Fairy.Harvest.Behaviour;
@@ -14,7 +15,8 @@ namespace Elemental.Gameplay
     {
         [SerializeField] ResourceSpawner resourceSpawner;
         [SerializeField] List<GameObject> fairyPrefabs;
-        [SerializeField] AltarUI altarUI;
+        [SerializeField] SummonAlterUI altarUI;
+        IUIPanel AltarUIPanel => altarUI;
 
         SafeZoneResourceTargetTool resourceTargetTool;
 
@@ -50,12 +52,7 @@ namespace Elemental.Gameplay
 
         public void OnInteracted()
         {
-            altarUI.gameObject.SetActive(true);
-        }
-
-        public void OffInteracted()
-        {
-            altarUI.gameObject.SetActive(false);
+            UIManager.Instance.OpenUI(AltarUIPanel);
         }
     }
 }
