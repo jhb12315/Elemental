@@ -12,7 +12,6 @@ namespace Elemental.Gameplay
 {
     public class Altar : MonoBehaviour, IInteractable
     {
-        [SerializeField] PoolManager poolManager;
         [SerializeField] ResourceSpawner resourceSpawner;
         [SerializeField] List<GameObject> fairyPrefabs;
         [SerializeField] AltarUI altarUI;
@@ -24,8 +23,12 @@ namespace Elemental.Gameplay
         void Awake()
         {
             resourceTargetTool = new SafeZoneResourceTargetTool(transform.position, safeZone);
-            poolManager.CreatePool(fairyPrefabs, transform);
             resourceSpawner.OnResourceSpawned += resourceTargetTool.CollectHarvestTargets;
+        }
+
+        void Start()
+        {
+            PoolManager.Instance.CreatePool(fairyPrefabs, transform);
         }
 
         void OnDrawGizmosSelected()
@@ -36,7 +39,7 @@ namespace Elemental.Gameplay
 
         public void SummonFairy(HarvestFairyData fairyData)
         {
-            GameObject spawnFairy = poolManager.PooledSpawnSetPos(fairyData.fairyPrefab, transform.position);
+            GameObject spawnFairy = PoolManager.Instance.PooledSpawnSetPos(fairyData.fairyPrefab, transform.position);
             spawnFairy.GetComponent<HarvestFairy>().Initialize(resourceTargetTool, fairyData);
         }
 

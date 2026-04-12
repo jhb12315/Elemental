@@ -1,17 +1,19 @@
+using Elemental.Framework.Generic;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Elemental.Framework.Pool
 {
-    public class PoolManager : MonoBehaviour
+    public class PoolManager : Singleton<PoolManager>
     {
         Dictionary<GameObject, ObjectPool<GameObject>> pools = new Dictionary<GameObject, ObjectPool<GameObject>>();
 
         [SerializeField] List<GameObject> dropItemPrefabs;
 
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             CreatePool(dropItemPrefabs, transform);
         }
 
