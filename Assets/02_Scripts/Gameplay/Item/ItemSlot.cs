@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Elemental.Gameplay.item
+namespace Elemental.Gameplay.Item
 {
     public class ItemSlot
     {

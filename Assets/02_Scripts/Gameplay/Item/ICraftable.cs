@@ -1,9 +1,11 @@
 
-using Elemental.Gameplay.item;
 using System.Collections.Generic;
 
-public interface ICraftable
+namespace Elemental.Gameplay.Item
 {
-    bool CanCraft(List<RecipeIngredient> ingredients);
-    bool TryCraft(List<RecipeIngredient> ingredients);
+    public interface ICraftable
+    {
+        bool CanCraft(List<RecipeIngredient> ingredients);
+        bool TryCraft(List<RecipeIngredient> ingredients);
+    }
 }

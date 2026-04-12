@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Elemental.Gameplay.Resource.Drop
+namespace Elemental.Gameplay.Resource
 {
     [Serializable]
     public class DropItemData

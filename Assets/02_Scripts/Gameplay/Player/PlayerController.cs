@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Elemental.Gameplay.Player.Controller
+namespace Elemental.Gameplay.Player
 {
     public class PlayerController : MonoBehaviour
     {

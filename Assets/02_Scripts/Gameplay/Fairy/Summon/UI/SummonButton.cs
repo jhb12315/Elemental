@@ -1,7 +1,7 @@
-using Elemental.Gameplay.item;
+using Elemental.Gameplay.Item;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Fairy.Summon
+namespace Elemental.Gameplay.Fairy
 {
     // Fairy 소환 버튼
     public class SummonButton : MonoBehaviour

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Elemental.Gameplay.Fairy.Summon
+namespace Elemental.Gameplay.Fairy
 {
     // 소환 재료 표시 CurrentOpenUI
     public class SummonIngredientUI : MonoBehaviour

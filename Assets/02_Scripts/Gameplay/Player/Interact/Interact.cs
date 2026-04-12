@@ -1,33 +1,35 @@
 using Elemental.Framework.UI;
-using Elemental.Gameplay.Interact;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Interact : MonoBehaviour
+namespace Elemental.Gameplay.Player
 {
-    Vector2 mousePosition;
-
-    public void OnMousePosition(InputAction.CallbackContext ctx)
+    public class Interact : MonoBehaviour
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
-    }
+        Vector2 mousePosition;
 
-    public void OnInteract(InputAction.CallbackContext ctx)
-    {
-        if (ctx.started)
+        public void OnMousePosition(InputAction.CallbackContext ctx)
         {
-            if (UIManager.Instance.IsMouseOnUI) return;
+            mousePosition = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+        }
 
-            Collider2D overlapObejct = Physics2D.OverlapPoint(mousePosition);
-
-            if (overlapObejct == null)
+        public void OnInteract(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started)
             {
-                return;
-            }
+                if (UIManager.Instance.IsMouseOnUI) return;
 
-            else if (overlapObejct.gameObject.TryGetComponent(out IInteractable interactTarget))
-            {
-                interactTarget.OnInteracted();
+                Collider2D overlapObejct = Physics2D.OverlapPoint(mousePosition);
+
+                if (overlapObejct == null)
+                {
+                    return;
+                }
+
+                else if (overlapObejct.gameObject.TryGetComponent(out IInteractable interactTarget))
+                {
+                    interactTarget.OnInteracted();
+                }
             }
         }
     }

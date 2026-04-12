@@ -2,7 +2,7 @@ using Elemental.Framework.Pool;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Elemental.Gameplay.Fairy.Behaviour
+namespace Elemental.Gameplay.Fairy
 {
     public class FairyPooled : MonoBehaviour, IPoolObject
     {

@@ -1,8 +1,8 @@
-using Elemental.Gameplay.item;
+using Elemental.Gameplay.Item;
 using System;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Fairy.Summon
+namespace Elemental.Gameplay.Fairy
 {
     // 소환 재료 표시 CurrentOpenUI 관리
     public class SummonRecipeUI : MonoBehaviour

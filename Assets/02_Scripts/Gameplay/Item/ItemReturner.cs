@@ -2,7 +2,7 @@ using Elemental.Framework.Pool;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Elemental.Gameplay.item
+namespace Elemental.Gameplay.Item
 {
     public class ItemReturner : MonoBehaviour, IPoolObject, IPoolable
     {

@@ -1,6 +1,4 @@
-using System;
-
-namespace Elemental.Gameplay.Resource.Cut
+namespace Elemental.Gameplay.Resource
 {
     public interface ICuttable
     {

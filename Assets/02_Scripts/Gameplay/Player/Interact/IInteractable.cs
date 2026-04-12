@@ -1,5 +1,5 @@
 
-namespace Elemental.Gameplay.Interact
+namespace Elemental.Gameplay.Player
 {
     public interface IInteractable
     {

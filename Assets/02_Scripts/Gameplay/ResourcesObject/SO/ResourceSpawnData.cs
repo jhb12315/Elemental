@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Elemental.Gameplay.Resource.Spawn
+namespace Elemental.Gameplay.Resource
 {
     [CreateAssetMenu(fileName = "ResourceSpawnData", menuName = "Scriptable Objects/ResourceSpawnData")]
     public class ResourceSpawnData : ScriptableObject

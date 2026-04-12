@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Elemental.Gameplay.item.UI
+namespace Elemental.Gameplay.Item
 {
     public class ItemSlotUI : MonoBehaviour
     {

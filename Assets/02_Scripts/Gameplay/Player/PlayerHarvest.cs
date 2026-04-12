@@ -1,8 +1,7 @@
-using Elemental.Gameplay.Resource.Cut;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Elemental.Gameplay.Player.Harvest
+namespace Elemental.Gameplay.Player
 {
     public class PlayerHarvest : MonoBehaviour
     {

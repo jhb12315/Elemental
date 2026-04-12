@@ -1,9 +1,8 @@
 using Elemental.Gameplay.Resource;
-using Elemental.Gameplay.Resource.Cut;
 using System.Collections;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Fairy.Harvest.Behaviour
+namespace Elemental.Gameplay.Fairy
 {
     public class HarvestFairy : MonoBehaviour
     {

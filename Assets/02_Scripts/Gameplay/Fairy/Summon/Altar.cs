@@ -1,15 +1,11 @@
 using Elemental.Framework.Pool;
 using Elemental.Framework.UI;
-using Elemental.Gameplay.Fairy;
-using Elemental.Gameplay.Fairy.Harvest;
-using Elemental.Gameplay.Fairy.Harvest.Behaviour;
-using Elemental.Gameplay.Fairy.Summon;
-using Elemental.Gameplay.Interact;
-using Elemental.Gameplay.Resource.Pool;
+using Elemental.Gameplay.Player;
+using Elemental.Gameplay.Resource;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Elemental.Gameplay
+namespace Elemental.Gameplay.Fairy
 {
     public class Altar : MonoBehaviour, IInteractable
     {

@@ -1,10 +1,9 @@
 using Elemental.Framework.Pool;
-using Elemental.Gameplay.Resource.Drop;
 using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Elemental.Gameplay.Resource.Cut
+namespace Elemental.Gameplay.Resource
 {
     public class ResourceReturner : MonoBehaviour, ICuttable, IPoolObject, IPoolable
     {

@@ -1,10 +1,9 @@
 using Elemental.Framework.UI;
-using Elemental.Gameplay.item.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Elemental.Gameplay.item
+namespace Elemental.Gameplay.Item
 {
     public class Inventory : MonoBehaviour, ICraftable, IUIPanel
     {

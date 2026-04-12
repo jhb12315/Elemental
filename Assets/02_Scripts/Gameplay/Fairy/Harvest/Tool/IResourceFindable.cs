@@ -1,7 +1,7 @@
 using Elemental.Gameplay.Resource;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Fairy.Harvest
+namespace Elemental.Gameplay.Fairy
 {
     public interface IResourceFindable
     {

@@ -1,15 +1,18 @@
-using Elemental.Gameplay.item;
+using Elemental.Gameplay.Item;
 using UnityEngine;
 
-public class ItemMagnet : MonoBehaviour
+namespace Elemental.Gameplay.Item
 {
-    [SerializeField] Inventory inventory;
-
-    void OnTriggerEnter2D(Collider2D collision)
+    public class ItemMagnet : MonoBehaviour
     {
-        if (collision.CompareTag("DropItem"))
+        [SerializeField] Inventory inventory;
+
+        void OnTriggerEnter2D(Collider2D collision)
         {
-            inventory.AddItem(collision.gameObject.GetComponent<ItemDataStorage>().ItemData, collision.gameObject.GetComponent<ItemReturner>());
+            if (collision.CompareTag("DropItem"))
+            {
+                inventory.AddItem(collision.gameObject.GetComponent<ItemDataStorage>().ItemData, collision.gameObject.GetComponent<ItemReturner>());
+            }
         }
     }
 }

@@ -82,7 +82,7 @@ namespace Elemental.Framework.Pool
 
         void OnGet(GameObject gameObject)
         {
-            if(gameObject.TryGetComponent(out IPoolable poolable)) poolable.OnSpawn();
+            if (gameObject.TryGetComponent(out IPoolable poolable)) poolable.OnSpawn();
         }
 
         void OnRelease(GameObject gameObject)

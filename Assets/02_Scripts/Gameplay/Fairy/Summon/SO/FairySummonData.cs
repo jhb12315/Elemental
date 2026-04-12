@@ -1,8 +1,8 @@
+using Elemental.Gameplay.Item;
 using System.Collections.Generic;
 using UnityEngine;
-using Elemental.Gameplay.item;
 
-namespace Elemental.Gameplay.Fairy.Summon
+namespace Elemental.Gameplay.Fairy
 {
     [CreateAssetMenu(fileName = "FairySummonData", menuName = "Scriptable Objects/Fairy/FairySummonData")]
     public class FairySummonData : ScriptableObject

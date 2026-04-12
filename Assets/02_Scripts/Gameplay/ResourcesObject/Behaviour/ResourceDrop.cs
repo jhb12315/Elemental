@@ -2,7 +2,7 @@ using Elemental.Framework.Pool;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Resource.Drop
+namespace Elemental.Gameplay.Resource
 {
     public class ResourceDrop : MonoBehaviour
     {

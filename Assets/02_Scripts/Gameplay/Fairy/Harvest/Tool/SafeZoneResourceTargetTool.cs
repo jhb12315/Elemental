@@ -1,10 +1,9 @@
 using Elemental.Gameplay.Resource;
-using Elemental.Gameplay.Resource.Cut;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Fairy.Harvest
+namespace Elemental.Gameplay.Fairy
 {
     public class SafeZoneResourceTargetTool : IResourceFindable
     {

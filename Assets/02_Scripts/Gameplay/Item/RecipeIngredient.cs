@@ -1,6 +1,6 @@
 using System;
 
-namespace Elemental.Gameplay.item
+namespace Elemental.Gameplay.Item
 {
     [Serializable]
     public class RecipeIngredient

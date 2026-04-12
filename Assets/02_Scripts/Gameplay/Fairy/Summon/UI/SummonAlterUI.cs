@@ -1,7 +1,7 @@
 using Elemental.Framework.UI;
 using UnityEngine;
 
-namespace Elemental.Gameplay.Fairy.Summon
+namespace Elemental.Gameplay.Fairy
 {
     public class SummonAlterUI : MonoBehaviour, IUIPanel
     {

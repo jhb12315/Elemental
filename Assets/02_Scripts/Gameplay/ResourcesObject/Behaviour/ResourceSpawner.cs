@@ -1,11 +1,9 @@
 using Elemental.Framework.Pool;
-using Elemental.Gameplay.Resource.Drop;
-using Elemental.Gameplay.Resource.Spawn;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-namespace Elemental.Gameplay.Resource.Pool
+namespace Elemental.Gameplay.Resource
 {
     public class ResourceSpawner : MonoBehaviour
     {
@@ -23,7 +21,7 @@ namespace Elemental.Gameplay.Resource.Pool
         {
             poolManager = PoolManager.Instance;
             resourcePrefabs = new List<GameObject>(resourceDatas.Length);
-            
+
             foreach (var data in resourceDatas)
             {
                 resourcePrefabs.Add(data.prefab);
